@@ -14,12 +14,15 @@ eureka:
 spring:
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
-        - id: movieRoute 
+        - id: movie-service 
           uri: lb://movie-service
           predicates:
             - Path=/movies/**
-        - id: catalogRoute 
+        - id: catalog-service
           uri: lb://catalog-service 
           predicates: 
             - Path=/catalog/**
